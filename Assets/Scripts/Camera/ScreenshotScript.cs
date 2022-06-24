@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Screenshoot : MonoBehaviour
+public class ScreenshotScript : MonoBehaviour
 {
     [SerializeField]
     private string path;
