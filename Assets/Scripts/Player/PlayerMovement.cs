@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Mathf.Abs(rigidbody.velocity.y)<0.01f || grounded)
         {
-            animator.SetTrigger("isJumping");
+            animator.SetTrigger("Jumping");
             rigidbody.AddForce(new Vector2(0, jumpSpeed));
             psm.PlayAudioJump();
         }
