@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
             if (resultRay.transform.tag == "Suelo" || resultRay.transform.tag == "Adherente" || resultRay.transform.tag=="LancePrefab" || resultRay.transform.tag =="Spike")
             {
                 grounded = true;
+               
             }
         }
 
@@ -72,19 +73,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Mathf.Abs(rigidbody.velocity.y)<0.01f || grounded)
         {
-            animator.SetTrigger("Jumping");
+            animator.SetTrigger("Jumping");          
             rigidbody.AddForce(new Vector2(0, jumpSpeed));
             psm.PlayAudioJump();
         }
     }
 
-
     void Flip()
     {
          facingRight = !facingRight;
          transform.Rotate(Vector3.up, 180.0f, Space.World);
-    }
-
-        
-
+    }      
 }

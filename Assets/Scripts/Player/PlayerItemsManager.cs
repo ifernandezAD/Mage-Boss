@@ -12,6 +12,7 @@ public class PlayerItemsManager : MonoBehaviour
     public Transform lanceSpawn;
     public Rigidbody arrowPrefab;
     public Rigidbody lancePrefab;
+    public GameObject bow;
 
     public Image bowImage;
     public Image hammerImage;
@@ -26,6 +27,7 @@ public class PlayerItemsManager : MonoBehaviour
     private bool canShootArrow = true;
     public float lanceCadency = 1f;
     private bool canShootLance = true;
+    public float spearDelay;
 
     public CameraShake cameraShake;
 
@@ -46,7 +48,7 @@ public class PlayerItemsManager : MonoBehaviour
         {
             if (canShootArrow)
             {
-                animator.SetTrigger("isAttacking");
+                animator.SetTrigger("Arrow");
                 ShootArrow();
                 StartCoroutine("BowCadency");
             }
@@ -57,8 +59,7 @@ public class PlayerItemsManager : MonoBehaviour
         {
             if (canShootLance)
             {
-                ShootLance();
-                StartCoroutine("LanceCadency");
+                StartCoroutine("ThrowSpear");
             }
 
         }
@@ -68,27 +69,35 @@ public class PlayerItemsManager : MonoBehaviour
     {
         canShootArrow = false;
         yield return new WaitForSeconds(arrowCadency);
+        bow.SetActive(false);
         canShootArrow = true;
     }
 
-    IEnumerator LanceCadency()
-    {
+    IEnumerator ThrowSpear()
+    {   
+        animator.SetTrigger("Spear");
         canShootLance = false;
+        yield return new WaitForSeconds(spearDelay);      
+        clone = Instantiate(lancePrefab, lanceSpawn.position, lanceSpawn.rotation) as Rigidbody;
+        clone.AddForce(arrowSpawn.transform.right * arrowSpeed);
+        psm.PlayAudioFire();
         yield return new WaitForSeconds(lanceCadency);
         canShootLance = true;
     }
 
-    
+    /*
     void ShootLance()
     {
+        animator.SetTrigger("Spear");
         clone = Instantiate(lancePrefab, lanceSpawn.position, lanceSpawn.rotation) as Rigidbody;
         clone.AddForce(arrowSpawn.transform.right * arrowSpeed);
         psm.PlayAudioFire();
-    }
+    } */
 
     //Void_Shoot
     void ShootArrow()
     {
+        bow.SetActive(true);
         clone = Instantiate(arrowPrefab, arrowSpawn.position, arrowSpawn.rotation) as Rigidbody;
         clone.AddForce(arrowSpawn.transform.right * arrowSpeed);
         psm.PlayAudioFire();
