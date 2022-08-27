@@ -1318,9 +1318,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.4718277
-  m_Height: 1.6739558
+  m_Height: 1.5377877
   m_Direction: 1
-  m_Center: {x: 2.8191189e-11, y: -0.95229894, z: 0.028172243}
+  m_Center: {x: 2.6128285e-11, y: -0.88421506, z: 0.028172245}
 --- !u!1001 &689145302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8219,6 +8219,7 @@ GameObject:
   - component: {fileID: 1278562183}
   - component: {fileID: 1278562182}
   - component: {fileID: 1278562184}
+  - component: {fileID: 1278562185}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8486,6 +8487,30 @@ MonoBehaviour:
   lanceCadency: 3
   spearDelay: 1.8
   cameraShake: {fileID: 1021352163}
+--- !u!114 &1278562185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278562175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e92612d503d844ba1242d5919cb5eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkPoint: {fileID: 1647562172}
+  startingLives: 3
+  currentLives: 0
+  startingHealth: 3
+  currentHealth: 0
+  lifesIndicator: {fileID: 5567386188982658268}
+  godModeDuration: 0
+  renderer: {fileID: 101856942}
+  rate: 20
+  delay: 0.1
+  dieDelay: 1
+  animator: {fileID: 1877988035}
 --- !u!4 &1305436411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 967658288219590484, guid: 2310d4161a356cc41b062a008dbd742f, type: 3}
@@ -9086,6 +9111,11 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8598240021312670032, guid: 6f98839127ef56a4dae6a657aaee2805, type: 3}
   m_PrefabInstance: {fileID: 8598240019857091224}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1877988035 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 02082f7bc67714440b3c88944741b171, type: 3}
+  m_PrefabInstance: {fileID: 16468831}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1913292872
 GameObject:
@@ -10053,7 +10083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5193086234605710607, guid: 12eac64afed04f14ab1317c08fb88d08, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5193086234977225351, guid: 12eac64afed04f14ab1317c08fb88d08, type: 3}
       propertyPath: m_Enabled

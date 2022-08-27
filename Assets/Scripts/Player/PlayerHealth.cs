@@ -30,6 +30,8 @@ public class PlayerHealth : MonoBehaviour
     private PlayerSoundManager psm;
     private PlayerMovement pm;
 
+    public Animator animator;
+
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "DemoBoss")
@@ -128,7 +130,7 @@ public class PlayerHealth : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene("GameOver");
+                StartCoroutine("Die");
             }
         }
 
@@ -138,6 +140,13 @@ public class PlayerHealth : MonoBehaviour
     {
         PlayerPrefs.SetInt("currentHealth", currentHealth);
         PlayerPrefs.SetInt("currentLives", currentLives);
+    }
+
+    IEnumerator Die()
+    {
+        animator.SetTrigger("Die");
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene("GameOver");
     }
 
     IEnumerator RespawnPlayer()
