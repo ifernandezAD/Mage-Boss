@@ -8475,7 +8475,7 @@ MonoBehaviour:
   arrowSpawn: {fileID: 423210320}
   lanceSpawn: {fileID: 325438115}
   arrowPrefab: {fileID: 188070636490805480, guid: 8cba116d7b83a134eaf48e6d3424dccc, type: 3}
-  lancePrefab: {fileID: 6399862291520564023, guid: 487643dac83c67f4d9140cfba257e0fc, type: 3}
+  lancePrefab: {fileID: 4806262871511584161, guid: 3b85b2df1c8ec5444979e5a08d9deb67, type: 3}
   bow: {fileID: 1209968787}
   bowImage: {fileID: 0}
   hammerImage: {fileID: 0}
@@ -10083,7 +10083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5193086234605710607, guid: 12eac64afed04f14ab1317c08fb88d08, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5193086234977225351, guid: 12eac64afed04f14ab1317c08fb88d08, type: 3}
       propertyPath: m_Enabled
