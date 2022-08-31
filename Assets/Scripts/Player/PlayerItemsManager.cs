@@ -48,7 +48,7 @@ public class PlayerItemsManager : MonoBehaviour
         {
             if (canShootArrow)
             {
-                animator.SetTrigger("Arrow");
+                animator.SetTrigger("Apple");
                 ShootArrow();
                 StartCoroutine("BowCadency");
             }
@@ -97,7 +97,7 @@ public class PlayerItemsManager : MonoBehaviour
     //Void_Shoot
     void ShootArrow()
     {
-        bow.SetActive(true);
+        
         clone = Instantiate(arrowPrefab, arrowSpawn.position, arrowSpawn.rotation) as Rigidbody;
         clone.AddForce(arrowSpawn.transform.right * arrowSpeed);
         psm.PlayAudioFire();
