@@ -8477,13 +8477,8 @@ MonoBehaviour:
   arrowPrefab: {fileID: 188070636490805480, guid: 8cba116d7b83a134eaf48e6d3424dccc, type: 3}
   lancePrefab: {fileID: 4806262871511584161, guid: 3b85b2df1c8ec5444979e5a08d9deb67, type: 3}
   bow: {fileID: 1209968787}
-  bowImage: {fileID: 0}
-  hammerImage: {fileID: 0}
-  lanceImage: {fileID: 0}
-  hasBow: 1
-  hasHammer: 0
-  hasLance: 1
-  arrowCadency: 0.5
+  appleCadency: 1.8
+  appleDelay: 0.8
   lanceCadency: 3
   spearDelay: 1.8
   cameraShake: {fileID: 1021352163}
