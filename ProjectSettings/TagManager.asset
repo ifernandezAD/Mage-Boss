@@ -11,6 +11,8 @@ TagManager:
   - Lance
   - Boss
   - Fireball
+  - Bow
+  - Hammer
   layers:
   - Default
   - TransparentFX

@@ -9,9 +9,11 @@ public class PlayerMovement : MonoBehaviour
     public bool facingRight = true;
     private Rigidbody rigidbody;
     public float jumpSpeed = 600.0f;
+    public float fallMultiplier;
 
     public bool grounded = false;
     private bool enSuelo;
+
 
     private PlayerSoundManager psm;
     private Animator animator;
@@ -65,6 +67,11 @@ public class PlayerMovement : MonoBehaviour
         if (grounded)
         {
             animator.SetFloat("Speed", Mathf.Abs(moveDirection));
+        }
+
+        if(rigidbody.velocity.y < 0)
+        {
+            rigidbody.velocity+=Vector3.up*Physics.gravity.y*fallMultiplier*Time.deltaTime;
         }
 
     }

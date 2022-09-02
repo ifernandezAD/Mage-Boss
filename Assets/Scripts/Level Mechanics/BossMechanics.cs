@@ -184,16 +184,11 @@ public class BossMechanics : MonoBehaviour
     {
         if (godMode == false)
         {
-            if (other.gameObject.tag == "ArrowPlayer")
+            if (other.gameObject.tag == "ArrowPlayer"|| other.gameObject.tag == "LancePrefab" || other.gameObject.tag == "Hammer")
             {
                 RecibirDanyo();
             }
         }
-        if (other.gameObject.tag == "LancePrefab")
-        {
-            Destroy(other.gameObject);
-        }
-
     }
 
     public void RecibirDanyo()
