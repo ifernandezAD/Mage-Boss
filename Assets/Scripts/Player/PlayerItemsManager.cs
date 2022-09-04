@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerItemsManager : MonoBehaviour
 {
@@ -12,7 +10,8 @@ public class PlayerItemsManager : MonoBehaviour
     public Transform lanceSpawn;
     public Rigidbody arrowPrefab;
     public Rigidbody lancePrefab;
-    public GameObject bow;
+    public GameObject spoon;
+
 
     Rigidbody clone;
 
@@ -22,6 +21,8 @@ public class PlayerItemsManager : MonoBehaviour
     public float lanceCadency = 1f;
     private bool canShootLance = true;
     public float spearDelay;
+    public float spoonDelay;
+    private bool canAttackSpoon = true;
 
     public CameraShake cameraShake;
 
@@ -54,30 +55,50 @@ public class PlayerItemsManager : MonoBehaviour
                 StartCoroutine("ThrowSpear");
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            if (canAttackSpoon)
+            {
+                StartCoroutine("SpoonAttack");
+            }
+        }
+
     }
 
     IEnumerator ThrowSpear()
-    {   
+    {
         animator.SetTrigger("Spear");
-        canShootLance = false;
-        yield return new WaitForSeconds(spearDelay);      
+        DisableWeapons();
+        yield return new WaitForSeconds(spearDelay);
         clone = Instantiate(lancePrefab, lanceSpawn.position, lanceSpawn.rotation) as Rigidbody;
         clone.AddForce(arrowSpawn.transform.right * arrowSpeed);
         psm.PlayAudioFire();
         yield return new WaitForSeconds(lanceCadency);
-        canShootLance = true;
+        EnableWeapons();
     }
 
     IEnumerator ThrowApple()
     {
         animator.SetTrigger("Apple");
-        canShootApple = false;
+        DisableWeapons();
         yield return new WaitForSeconds(appleDelay);
         clone = Instantiate(arrowPrefab, arrowSpawn.position, arrowSpawn.rotation) as Rigidbody;
-        clone.AddForce(arrowSpawn.transform.right * arrowSpeed);
-        psm.PlayAudioFire();       
+        clone.AddForce(arrowSpawn.transform.up * arrowSpeed);
+        psm.PlayAudioFire();
         yield return new WaitForSeconds(appleCadency);
-        canShootApple = true;
+        EnableWeapons();
+    }
+
+    IEnumerator SpoonAttack()
+    {
+        animator.SetTrigger("Hammer");
+        DisableWeapons();
+        spoon.SetActive(true);
+        yield return new WaitForSeconds(spoonDelay);
+        StartCoroutine(cameraShake.CameraShaking());
+        spoon.SetActive(false);
+        EnableWeapons();
     }
 
     private void OnTriggerStay(Collider other)
@@ -91,5 +112,19 @@ public class PlayerItemsManager : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+    }
+
+    void EnableWeapons()
+    {
+        canShootLance = true;
+        canAttackSpoon = true;
+        canShootApple = true;
+    }
+
+    void DisableWeapons()
+    {
+        canShootLance = false;
+        canAttackSpoon = false;
+        canShootApple = false;
     }
 }

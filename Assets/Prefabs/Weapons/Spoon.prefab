@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 1607116786064336658}
   m_Layer: 0
   m_Name: Spoon
-  m_TagString: Untagged
+  m_TagString: Hammer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -535,8 +535,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.74145603, y: 3.1724782, z: 0.45308012}
-  m_Center: {x: 0, y: 1.6073837, z: 0.014915973}
+  m_Size: {x: 0.74145603, y: 4.084281, z: 0.45308012}
+  m_Center: {x: 0, y: 2.0632854, z: 0.014915973}
 --- !u!1 &8936403114406470890
 GameObject:
   m_ObjectHideFlags: 0

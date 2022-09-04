@@ -184,8 +184,21 @@ public class BossMechanics : MonoBehaviour
     {
         if (godMode == false)
         {
-            if (other.gameObject.tag == "ArrowPlayer"|| other.gameObject.tag == "LancePrefab" || other.gameObject.tag == "Hammer")
+            if (other.gameObject.tag == "ArrowPlayer" || other.gameObject.tag == "LancePrefab")
             {
+                Debug.Log("Me has daoooooo arggghhh");
+                RecibirDanyo();
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (godMode == false)
+        {
+            if (other.gameObject.tag == "Hammer")
+            {
+                Debug.Log("Me has daoooooo arggghhh");
                 RecibirDanyo();
             }
         }
@@ -216,7 +229,7 @@ public class BossMechanics : MonoBehaviour
     {
         StopCoroutine("FireballShooting");
         explosion.Play();
-        bossHealthBar.enabled = false;  
+        bossHealthBar.enabled = false;
         myRender[0].enabled = false;
         myRender[1].enabled = false;
         myRender[2].enabled = false;
