@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3805900600472739655}
   - component: {fileID: 7619996935431420216}
   - component: {fileID: 551282784845568267}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Castle_Block_1x6
   m_TagString: Suelo
   m_Icon: {fileID: 0}

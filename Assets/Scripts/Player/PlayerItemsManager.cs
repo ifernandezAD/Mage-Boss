@@ -11,6 +11,7 @@ public class PlayerItemsManager : MonoBehaviour
     public Rigidbody arrowPrefab;
     public Rigidbody lancePrefab;
     public GameObject spoon;
+    public GameObject spoonTrigger;
 
 
     Rigidbody clone;
@@ -35,8 +36,13 @@ public class PlayerItemsManager : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
+    
+    private void OnEnable()
+    {
+        PlayerMovement.jumping += DisableWeapons;
+        PlayerMovement.onGround += EnableWeapons;
+    }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
@@ -95,9 +101,11 @@ public class PlayerItemsManager : MonoBehaviour
         animator.SetTrigger("Hammer");
         DisableWeapons();
         spoon.SetActive(true);
+        spoonTrigger.SetActive(true);
         yield return new WaitForSeconds(spoonDelay);
         StartCoroutine(cameraShake.CameraShaking());
         spoon.SetActive(false);
+        spoonTrigger.SetActive(false);
         EnableWeapons();
     }
 

@@ -186,7 +186,8 @@ public class BossMechanics : MonoBehaviour
         {
             if (other.gameObject.tag == "ArrowPlayer" || other.gameObject.tag == "LancePrefab")
             {
-                Debug.Log("Me has daoooooo arggghhh");
+                Debug.Log("Me has dadoooooo arggghhh");
+                Destroy(other.gameObject);
                 RecibirDanyo();
             }
         }
@@ -198,7 +199,7 @@ public class BossMechanics : MonoBehaviour
         {
             if (other.gameObject.tag == "Hammer")
             {
-                Debug.Log("Me has daoooooo arggghhh");
+                Debug.Log("Me has dadoooooo arggghhh");
                 RecibirDanyo();
             }
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private PlayerSoundManager psm;
     private Animator animator;
 
+    public static event Action jumping;
+    public static event Action onGround;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
             if (resultRay.transform.tag == "Suelo" || resultRay.transform.tag == "Adherente" || resultRay.transform.tag=="LancePrefab" || resultRay.transform.tag =="Spike")
             {
                 grounded = true;
+                onGround?.Invoke();
                
             }
         }
@@ -83,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("Jumping");          
             rigidbody.AddForce(new Vector2(0, jumpSpeed));
             psm.PlayAudioJump();
+            jumping?.Invoke();
         }
     }
 

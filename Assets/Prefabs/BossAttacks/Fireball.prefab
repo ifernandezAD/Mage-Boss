@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 188070636490805480}
   - component: {fileID: 8532319393119099293}
   - component: {fileID: 5684859289486117304}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Fireball
   m_TagString: Fireball
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 6047832168293902235}
   - component: {fileID: 5754067991045414839}
   - component: {fileID: 2021438812564096133}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3178962366414800762, guid: 78ef9f5e0ce29004899553f05bcb7c64, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6964450543873110129, guid: 78ef9f5e0ce29004899553f05bcb7c64, type: 3}
       propertyPath: m_RootOrder
@@ -228,6 +228,10 @@ PrefabInstance:
     - target: {fileID: 6964450543873110129, guid: 78ef9f5e0ce29004899553f05bcb7c64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7944660205561132831, guid: 78ef9f5e0ce29004899553f05bcb7c64, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ef9f5e0ce29004899553f05bcb7c64, type: 3}
