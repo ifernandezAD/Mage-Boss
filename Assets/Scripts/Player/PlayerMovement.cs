@@ -54,8 +54,7 @@ public class PlayerMovement : MonoBehaviour
             if (resultRay.transform.tag == "Suelo" || resultRay.transform.tag == "Adherente" || resultRay.transform.tag=="LancePrefab" || resultRay.transform.tag =="Spike")
             {
                 grounded = true;
-                onGround?.Invoke();
-               
+                onGround?.Invoke();   
             }
         }
 
@@ -72,6 +71,10 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetFloat("Speed", Mathf.Abs(moveDirection));
         }
+        else
+        {
+            jumping?.Invoke();
+        }
 
         if(rigidbody.velocity.y < 0)
         {
@@ -83,11 +86,10 @@ public class PlayerMovement : MonoBehaviour
     private void Saltar()
     {
         if (Mathf.Abs(rigidbody.velocity.y)<0.01f || grounded)
-        {
+        {          
             animator.SetTrigger("Jumping");          
             rigidbody.AddForce(new Vector2(0, jumpSpeed));
-            psm.PlayAudioJump();
-            jumping?.Invoke();
+            psm.PlayAudioJump();           
         }
     }
 

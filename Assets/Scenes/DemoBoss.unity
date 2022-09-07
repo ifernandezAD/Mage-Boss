@@ -8435,6 +8435,7 @@ MonoBehaviour:
   lanceCadency: 3
   spearDelay: 1.8
   spoonDelay: 2
+  jumpingTime: 1.2
   cameraShake: {fileID: 1021352163}
 --- !u!114 &1278562185
 MonoBehaviour:

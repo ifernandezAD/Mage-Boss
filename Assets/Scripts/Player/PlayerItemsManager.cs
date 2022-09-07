@@ -24,6 +24,8 @@ public class PlayerItemsManager : MonoBehaviour
     public float spearDelay;
     public float spoonDelay;
     private bool canAttackSpoon = true;
+    public float jumpingTime;
+   
 
     public CameraShake cameraShake;
 
@@ -39,8 +41,8 @@ public class PlayerItemsManager : MonoBehaviour
     
     private void OnEnable()
     {
-        PlayerMovement.jumping += DisableWeapons;
-        PlayerMovement.onGround += EnableWeapons;
+        PlayerMovement.jumping += DisableOnJumping;
+        //PlayerMovement.onGround += EnableWeapons;
     }
 
     void Update()
@@ -51,7 +53,6 @@ public class PlayerItemsManager : MonoBehaviour
             {
                 StartCoroutine("ThrowApple");
             }
-
         }
 
         if (Input.GetKeyDown(KeyCode.L))
@@ -64,7 +65,7 @@ public class PlayerItemsManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.J))
         {
-            if (canAttackSpoon)
+            if (canAttackSpoon )
             {
                 StartCoroutine("SpoonAttack");
             }
@@ -134,5 +135,17 @@ public class PlayerItemsManager : MonoBehaviour
         canShootLance = false;
         canAttackSpoon = false;
         canShootApple = false;
+    }
+
+    void DisableOnJumping()
+    {
+        StartCoroutine("DisableOnJumpingCorrutine");
+    }
+
+    IEnumerator DisableOnJumpingCorrutine()
+    {
+        DisableWeapons();
+        yield return new WaitForSeconds(jumpingTime);
+        EnableWeapons();        
     }
 }
