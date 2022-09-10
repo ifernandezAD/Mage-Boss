@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
 
     private bool godMode;
     public float godModeDuration;
-    public SkinnedMeshRenderer[] renderer;
+    public SkinnedMeshRenderer renderer;
 
     [Range(0, 100)]
     public int rate;
@@ -29,8 +29,6 @@ public class PlayerHealth : MonoBehaviour
 
     private PlayerSoundManager psm;
     private PlayerMovement pm;
-
-    public Animator animator;
 
     private void Start()
     {
@@ -130,7 +128,7 @@ public class PlayerHealth : MonoBehaviour
             }
             else
             {
-                StartCoroutine("Die");
+                SceneManager.LoadScene("GameOver");
             }
         }
 
@@ -140,13 +138,6 @@ public class PlayerHealth : MonoBehaviour
     {
         PlayerPrefs.SetInt("currentHealth", currentHealth);
         PlayerPrefs.SetInt("currentLives", currentLives);
-    }
-
-    IEnumerator Die()
-    {
-        animator.SetTrigger("Die");
-        yield return new WaitForSeconds(4);
-        SceneManager.LoadScene("GameOver");
     }
 
     IEnumerator RespawnPlayer()
@@ -170,38 +161,10 @@ public class PlayerHealth : MonoBehaviour
         godMode = true;
         for (int i=0; i < rate; i++)
         {
-            renderer[0].enabled = !renderer[0].enabled;
-            renderer[1].enabled = !renderer[1].enabled;
-            renderer[2].enabled = !renderer[2].enabled;
-            renderer[3].enabled = !renderer[3].enabled;
-            renderer[4].enabled = !renderer[4].enabled;
-            renderer[5].enabled = !renderer[5].enabled;
-            renderer[6].enabled = !renderer[6].enabled;
-            renderer[7].enabled = !renderer[7].enabled;
-            renderer[8].enabled = !renderer[8].enabled;
-            renderer[9].enabled = !renderer[9].enabled;
-            renderer[10].enabled = !renderer[10].enabled;
-            renderer[11].enabled = !renderer[11].enabled;
-            renderer[12].enabled = !renderer[12].enabled;
-            renderer[13].enabled = !renderer[13].enabled;
-            renderer[14].enabled = !renderer[14].enabled;
+            renderer.enabled = !renderer.enabled;
             yield return new WaitForSeconds(delay);
         }
-        renderer[0].enabled = true;
-        renderer[1].enabled = true;
-        renderer[2].enabled = true;
-        renderer[3].enabled = true;
-        renderer[4].enabled = true;
-        renderer[5].enabled = true;
-        renderer[6].enabled = true;
-        renderer[7].enabled = true;
-        renderer[8].enabled = true;
-        renderer[9].enabled = true;
-        renderer[10].enabled = true;
-        renderer[11].enabled = true;
-        renderer[12].enabled = true;
-        renderer[13].enabled = true;
-        renderer[14].enabled = true;
+        renderer.enabled = true;
         godMode = false;
 
     }

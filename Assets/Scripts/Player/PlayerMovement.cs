@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,17 +9,13 @@ public class PlayerMovement : MonoBehaviour
     public bool facingRight = true;
     private Rigidbody rigidbody;
     public float jumpSpeed = 600.0f;
-    public float fallMultiplier;
 
     public bool grounded = false;
     private bool enSuelo;
 
-
     private PlayerSoundManager psm;
     private Animator animator;
 
-    public static event Action jumping;
-    public static event Action onGround;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
             if (resultRay.transform.tag == "Suelo" || resultRay.transform.tag == "Adherente" || resultRay.transform.tag=="LancePrefab" || resultRay.transform.tag =="Spike")
             {
                 grounded = true;
-                onGround?.Invoke();   
             }
         }
 
@@ -71,31 +65,26 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetFloat("Speed", Mathf.Abs(moveDirection));
         }
-        else
-        {
-            jumping?.Invoke();
-        }
-
-        if(rigidbody.velocity.y < 0)
-        {
-            rigidbody.velocity+=Vector3.up*Physics.gravity.y*fallMultiplier*Time.deltaTime;
-        }
 
     }
 
     private void Saltar()
     {
         if (Mathf.Abs(rigidbody.velocity.y)<0.01f || grounded)
-        {          
-            animator.SetTrigger("Jumping");          
+        {
+            animator.SetTrigger("isJumping");
             rigidbody.AddForce(new Vector2(0, jumpSpeed));
-            psm.PlayAudioJump();           
+            psm.PlayAudioJump();
         }
     }
+
 
     void Flip()
     {
          facingRight = !facingRight;
          transform.Rotate(Vector3.up, 180.0f, Space.World);
-    }      
+    }
+
+        
+
 }

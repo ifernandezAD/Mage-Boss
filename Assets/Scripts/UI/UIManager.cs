@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         lifeItemAnchor = prefabImagenVida.rectTransform.rect.width;
+        Debug.Log("Ancho vida: " + lifeItemAnchor);
         CrearVidasUI(vidasInicial);
     }
 
