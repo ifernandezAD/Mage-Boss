@@ -4326,6 +4326,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4029829040657875647, guid: 0f50f2ff87ef9e944ba839bdf0feaf24, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6438278642639357558, guid: 0f50f2ff87ef9e944ba839bdf0feaf24, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4343,9 +4347,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 219145505}
     - target: {fileID: 6438278642639357569, guid: 0f50f2ff87ef9e944ba839bdf0feaf24, type: 3}
+      propertyPath: appleDelay
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438278642639357569, guid: 0f50f2ff87ef9e944ba839bdf0feaf24, type: 3}
+      propertyPath: spearDelay
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438278642639357569, guid: 0f50f2ff87ef9e944ba839bdf0feaf24, type: 3}
+      propertyPath: spoonDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438278642639357569, guid: 0f50f2ff87ef9e944ba839bdf0feaf24, type: 3}
       propertyPath: cameraShake
       value: 
       objectReference: {fileID: 1021352163}
+    - target: {fileID: 6438278642639357569, guid: 0f50f2ff87ef9e944ba839bdf0feaf24, type: 3}
+      propertyPath: jumpingTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438278642639357569, guid: 0f50f2ff87ef9e944ba839bdf0feaf24, type: 3}
+      propertyPath: appleCadency
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6438278642639357569, guid: 0f50f2ff87ef9e944ba839bdf0feaf24, type: 3}
       propertyPath: spoonTrigger
       value: 
