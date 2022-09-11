@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/DemoBoss.unity
+    guid: ff1c72184e0a1d048bc9f8651325169b
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 6c46e6493a0abad439da9efb906db6f4
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: fbc3913d01a7a7b4ea8531907a81b2b3
   m_configObjects: {}

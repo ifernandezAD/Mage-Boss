@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,13 +10,17 @@ public class PlayerMovement : MonoBehaviour
     public bool facingRight = true;
     private Rigidbody rigidbody;
     public float jumpSpeed = 600.0f;
+    public float fallMultiplier;
 
     public bool grounded = false;
     private bool enSuelo;
 
+
     private PlayerSoundManager psm;
     private Animator animator;
 
+    public static event Action jumping;
+    public static event Action onGround;
 
     // Start is called before the first frame update
     void Start()
@@ -25,18 +30,19 @@ public class PlayerMovement : MonoBehaviour
         psm = GetComponent<PlayerSoundManager>();
 
     }
- 
+
     // Update is called once per frame
     void Update()
     {
         moveDirection = Input.GetAxis("Horizontal");
 
-        rigidbody.velocity = new Vector2(moveDirection*maxSpeed, rigidbody.velocity.y);
+        rigidbody.velocity = new Vector2(moveDirection * maxSpeed, rigidbody.velocity.y);
 
-        if (moveDirection>0.0f && !facingRight)
+        if (moveDirection > 0.0f && !facingRight)
         {
             Flip();
-        }else if (moveDirection<0.0f && facingRight)
+        }
+        else if (moveDirection < 0.0f && facingRight)
         {
             Flip();
         }
@@ -46,9 +52,10 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit resultRay;
         if (Physics.Raycast(transform.position, Vector3.down, out resultRay, 1.5f))
         {
-            if (resultRay.transform.tag == "Suelo" || resultRay.transform.tag == "Adherente" || resultRay.transform.tag=="LancePrefab" || resultRay.transform.tag =="Spike")
+            if (resultRay.transform.tag == "Suelo" || resultRay.transform.tag == "Adherente" || resultRay.transform.tag == "LancePrefab" || resultRay.transform.tag == "Spike")
             {
                 grounded = true;
+                onGround?.Invoke();
             }
         }
 
@@ -65,26 +72,31 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetFloat("Speed", Mathf.Abs(moveDirection));
         }
+        else
+        {
+            jumping?.Invoke();
+        }
+
+        if (rigidbody.velocity.y < 0)
+        {
+            rigidbody.velocity += Vector3.up * Physics.gravity.y * fallMultiplier * Time.deltaTime;
+        }
 
     }
 
     private void Saltar()
     {
-        if (Mathf.Abs(rigidbody.velocity.y)<0.01f || grounded)
+        if (Mathf.Abs(rigidbody.velocity.y) < 0.01f || grounded)
         {
-            animator.SetTrigger("isJumping");
+            animator.SetTrigger("Jumping");
             rigidbody.AddForce(new Vector2(0, jumpSpeed));
             psm.PlayAudioJump();
         }
     }
 
-
     void Flip()
     {
-         facingRight = !facingRight;
-         transform.Rotate(Vector3.up, 180.0f, Space.World);
+        facingRight = !facingRight;
+        transform.Rotate(Vector3.up, 180.0f, Space.World);
     }
-
-        
-
 }

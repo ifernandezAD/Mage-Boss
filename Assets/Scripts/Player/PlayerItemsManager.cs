@@ -12,20 +12,22 @@ public class PlayerItemsManager : MonoBehaviour
     public Transform lanceSpawn;
     public Rigidbody arrowPrefab;
     public Rigidbody lancePrefab;
+    public GameObject spoon;
+    public GameObject spoonTrigger;
 
-    public Image bowImage;
-    public Image hammerImage;
-    public Image lanceImage;
 
     Rigidbody clone;
-    public bool hasBow;
-    public bool hasHammer;
-    public bool hasLance;
 
-    public float arrowCadency = 0.8f;
-    private bool canShootArrow = true;
+    public float appleCadency = 0.8f;
+    private bool canShootApple = true;
+    public float appleDelay;
     public float lanceCadency = 1f;
     private bool canShootLance = true;
+    public float spearDelay;
+    public float spoonDelay;
+    private bool canAttackSpoon = true;
+    public float jumpingTime;
+
 
     public CameraShake cameraShake;
 
@@ -39,93 +41,80 @@ public class PlayerItemsManager : MonoBehaviour
     }
 
 
-    // Update is called once per frame
+    private void OnEnable()
+    {
+        PlayerMovement.jumping += DisableOnJumping;
+        //PlayerMovement.onGround += EnableWeapons;
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K) && hasBow)
+        if (Input.GetKeyDown(KeyCode.K))
         {
-            if (canShootArrow)
+            if (canShootApple)
             {
-                animator.SetTrigger("isAttacking");
-                ShootArrow();
-                StartCoroutine("BowCadency");
+                StartCoroutine("ThrowApple");
             }
-
         }
 
-        if (Input.GetKeyDown(KeyCode.L) && hasLance)
+        if (Input.GetKeyDown(KeyCode.L))
         {
             if (canShootLance)
             {
-                ShootLance();
-                StartCoroutine("LanceCadency");
+                StartCoroutine("ThrowSpear");
             }
-
         }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            if (canAttackSpoon)
+            {
+                StartCoroutine("SpoonAttack");
+            }
+        }
+
     }
 
-    IEnumerator BowCadency()
+    IEnumerator ThrowSpear()
     {
-        canShootArrow = false;
-        yield return new WaitForSeconds(arrowCadency);
-        canShootArrow = true;
-    }
-
-    IEnumerator LanceCadency()
-    {
-        canShootLance = false;
-        yield return new WaitForSeconds(lanceCadency);
-        canShootLance = true;
-    }
-
-    
-    void ShootLance()
-    {
+        animator.SetTrigger("Spear");
+        DisableWeapons();
+        yield return new WaitForSeconds(spearDelay);
         clone = Instantiate(lancePrefab, lanceSpawn.position, lanceSpawn.rotation) as Rigidbody;
         clone.AddForce(arrowSpawn.transform.right * arrowSpeed);
         psm.PlayAudioFire();
+        yield return new WaitForSeconds(lanceCadency);
+        EnableWeapons();
     }
 
-    //Void_Shoot
-    void ShootArrow()
+    IEnumerator ThrowApple()
     {
+        animator.SetTrigger("Apple");
+        DisableWeapons();
+        yield return new WaitForSeconds(appleDelay);
         clone = Instantiate(arrowPrefab, arrowSpawn.position, arrowSpawn.rotation) as Rigidbody;
-        clone.AddForce(arrowSpawn.transform.right * arrowSpeed);
+        clone.AddForce(arrowSpawn.transform.up * arrowSpeed);
         psm.PlayAudioFire();
-       //Destroy(arrowPrefab, 5);
+        yield return new WaitForSeconds(appleCadency);
+        EnableWeapons();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    IEnumerator SpoonAttack()
     {
-        if (collision.gameObject.tag == "Bow")
-        {
-            psm.PlayAudioItem();
-            Destroy(collision.gameObject);
-            hasBow = true;
-            bowImage.gameObject.SetActive(true);
-        }
-
-        if (collision.gameObject.tag == "Hammer")
-        {
-            psm.PlayAudioItem();
-            Destroy(collision.gameObject);
-            hasHammer = true;
-            hammerImage.gameObject.SetActive(true);
-        }
-
-        if (collision.gameObject.tag == "Lance")
-        {
-            psm.PlayAudioItem();
-            Destroy(collision.gameObject);
-            hasLance = true;
-            lanceImage.gameObject.SetActive(true);
-        }
-
+        animator.SetTrigger("Hammer");
+        DisableWeapons();
+        spoon.SetActive(true);
+        spoonTrigger.SetActive(true);
+        yield return new WaitForSeconds(spoonDelay);
+        StartCoroutine(cameraShake.CameraShaking());
+        spoon.SetActive(false);
+        spoonTrigger.SetActive(false);
+        EnableWeapons();
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Destroy_Wall" && hasHammer && Input.GetKey(KeyCode.J))
+        if (other.gameObject.tag == "Destroy_Wall" && Input.GetKey(KeyCode.J))
         {
 
             StartCoroutine(cameraShake.CameraShaking());
@@ -134,5 +123,31 @@ public class PlayerItemsManager : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+    }
+
+    void EnableWeapons()
+    {
+        canShootLance = true;
+        canAttackSpoon = true;
+        canShootApple = true;
+    }
+
+    void DisableWeapons()
+    {
+        canShootLance = false;
+        canAttackSpoon = false;
+        canShootApple = false;
+    }
+
+    void DisableOnJumping()
+    {
+        StartCoroutine("DisableOnJumpingCorrutine");
+    }
+
+    IEnumerator DisableOnJumpingCorrutine()
+    {
+        DisableWeapons();
+        yield return new WaitForSeconds(jumpingTime);
+        EnableWeapons();
     }
 }

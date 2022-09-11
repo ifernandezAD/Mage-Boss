@@ -233,7 +233,7 @@ public class BossMechanics : MonoBehaviour
         bossActive = false;
         yield return new WaitForSeconds(1);
         Destroy(this.gameObject);
-        SceneManager.LoadScene("MenuVictoria");
+        SceneManager.LoadScene("Victory");
 
     }
 

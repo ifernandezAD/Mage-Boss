@@ -290,6 +290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc68f5a4ba71f44abc57fce08d8f9f3, type: 3}
+--- !u!1 &219145505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4029829040657875647, guid: 0f50f2ff87ef9e944ba839bdf0feaf24, type: 3}
+  m_PrefabInstance: {fileID: 6438278641770400009}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &251650866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3644,7 +3649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5193086234605710607, guid: 12eac64afed04f14ab1317c08fb88d08, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5193086234977225351, guid: 12eac64afed04f14ab1317c08fb88d08, type: 3}
       propertyPath: m_Enabled
@@ -4334,9 +4339,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5567386188982658268}
     - target: {fileID: 6438278642639357569, guid: 0f50f2ff87ef9e944ba839bdf0feaf24, type: 3}
+      propertyPath: spoon
+      value: 
+      objectReference: {fileID: 219145505}
+    - target: {fileID: 6438278642639357569, guid: 0f50f2ff87ef9e944ba839bdf0feaf24, type: 3}
       propertyPath: cameraShake
       value: 
       objectReference: {fileID: 1021352163}
+    - target: {fileID: 6438278642639357569, guid: 0f50f2ff87ef9e944ba839bdf0feaf24, type: 3}
+      propertyPath: spoonTrigger
+      value: 
+      objectReference: {fileID: 900076615}
     - target: {fileID: 6438278642639357578, guid: 0f50f2ff87ef9e944ba839bdf0feaf24, type: 3}
       propertyPath: m_RootOrder
       value: 12
