@@ -6,6 +6,7 @@ public class LanceManager : MonoBehaviour
 {
 
     private Rigidbody miRigid;
+    public ParticleSystem hit;
  
   
     private float initialJumpSpeed;
@@ -19,6 +20,7 @@ public class LanceManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        hit.Play();
         miRigid.constraints= RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
         Destroy(this.gameObject, 10);
 

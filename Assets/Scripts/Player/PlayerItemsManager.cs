@@ -112,19 +112,6 @@ public class PlayerItemsManager : MonoBehaviour
         EnableWeapons();
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Destroy_Wall" && Input.GetKey(KeyCode.J))
-        {
-
-            StartCoroutine(cameraShake.CameraShaking());
-
-            psm.PlayAudioBreakWall();
-
-            Destroy(other.gameObject);
-        }
-    }
-
     void EnableWeapons()
     {
         canShootLance = true;
