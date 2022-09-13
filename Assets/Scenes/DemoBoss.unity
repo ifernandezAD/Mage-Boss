@@ -2176,7 +2176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3296,7 +3296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3582,6 +3582,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 1618cb37bcd5144fd923b9697be57d63, type: 3}
+    - target: {fileID: 4753810297552819248, guid: e42035ca62d3ac44889946042dd9759d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753810297552819248, guid: e42035ca62d3ac44889946042dd9759d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753810297552819248, guid: e42035ca62d3ac44889946042dd9759d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8301887
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e42035ca62d3ac44889946042dd9759d, type: 3}
 --- !u!222 &3976167953705952529
@@ -3635,6 +3647,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5193086234605710600, guid: 12eac64afed04f14ab1317c08fb88d08, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5193086234605710602, guid: 12eac64afed04f14ab1317c08fb88d08, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3729,7 +3745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5193086234605710607, guid: 12eac64afed04f14ab1317c08fb88d08, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5193086234977225351, guid: 12eac64afed04f14ab1317c08fb88d08, type: 3}
       propertyPath: m_Enabled
@@ -3739,6 +3755,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3792deb106230984d835316b5b071d23, type: 2}
+    - target: {fileID: 5193086235446718205, guid: 12eac64afed04f14ab1317c08fb88d08, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5193086236123490199, guid: 12eac64afed04f14ab1317c08fb88d08, type: 3}
       propertyPath: m_LocalPosition.y
       value: 2.32
